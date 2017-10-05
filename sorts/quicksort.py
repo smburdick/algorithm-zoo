@@ -30,3 +30,31 @@ lists = [[27,89,15,174,1,5,14,88,2],[1,1,1,1,1,1,1,1,1,1,1,1,1,1],[9,8,7,6,5,4,3
 for list in lists:
 	quicksort (list, 0, len(list) - 1)
 	print list
+
+# Djikstra's Dutch National Flag Problem
+# AKA 3-way quicksort (A. A. Smith)
+# AKA Quick3way (Sedgewick & Wayne)...
+def dutchflag(A, l, h):
+	if h <= l:
+		return
+	t = l 		# "less than"
+	g = h 		# "greater than"
+	i = l + 1
+	p = A[l]
+	while i <= g:
+		if A[i] < p:
+			swap(A, t, i)
+			t = t + 1
+			i = i + 1
+		elif A[i] > p:
+			swap(A, i, g)
+			g = g - 1
+		else:
+			i = i + 1
+	dutchflag(A, l, t - 1)
+	dutchflag(A, g + 1, h)
+
+lists = [[27,89,15,174,1,5,14,88,2],[1,1,1,1,1,1,1,1,1,1,1,1,1,1],[9,8,7,6,5,4,3,2,1]]
+for list in lists:
+	dutchflag (list, 0, len(list) - 1)
+	print list
