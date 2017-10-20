@@ -4,7 +4,7 @@
 #
 def quicksort(A,p,r):
 	if p < r:
-		q = partition(A, p, r)
+		q = partition(A, p, r) # linear
 		quicksort(A,p,q-1)
 		quicksort(A, q+1, r)
 
